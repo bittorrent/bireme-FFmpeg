@@ -126,9 +126,13 @@ OBJS-$(CONFIG_WMA_FREQS)               += wma_freqs.o
 OBJS-$(CONFIG_WMV2DSP)                 += wmv2dsp.o
 
 # decoders/encoders
+OBJS-$(CONFIG_AAC_MF_AUDIO_DECODER)    += mf_audio_decoder.o
+OBJS-$(CONFIG_MP3_MF_AUDIO_DECODER)    += mf_audio_decoder.o
+OBJS-$(CONFIG_H264_MF_VIDEO_DECODER)   += mf_video_decoder.o
 OBJS-$(CONFIG_ZERO12V_DECODER)         += 012v.o
 OBJS-$(CONFIG_A64MULTI_ENCODER)        += a64multienc.o elbg.o
 OBJS-$(CONFIG_A64MULTI5_ENCODER)       += a64multienc.o elbg.o
+OBJS-$(CONFIG_AAC_AUDIOTOOLBOX_DECODER) += audiotoolbox_decoder.o
 OBJS-$(CONFIG_AAC_DECODER)             += aacdec.o aactab.o aacsbr.o aacps_float.o \
                                           aacadtsdec.o mpeg4audio.o kbdwin.o \
                                           sbrdsp.o aacpsdsp_float.o
@@ -301,6 +305,7 @@ OBJS-$(CONFIG_H264_DECODER)            += h264.o h264_cabac.o h264_cavlc.o \
                                           h264_direct.o h264_loopfilter.o  \
                                           h264_mb.o h264_picture.o h264_ps.o \
                                           h264_refs.o h264_sei.o h264_slice.o
+OBJS-$(CONFIG_H264_VIDEOTOOLBOX_DECODER) += videotoolbox_decoder.o
 OBJS-$(CONFIG_H264_MMAL_DECODER)       += mmaldec.o
 OBJS-$(CONFIG_H264_VDA_DECODER)        += vda_h264_dec.o
 OBJS-$(CONFIG_H264_QSV_DECODER)        += qsvdec_h2645.o
@@ -365,6 +370,7 @@ OBJS-$(CONFIG_MP2_ENCODER)             += mpegaudioenc_float.o mpegaudio.o \
 OBJS-$(CONFIG_MP2FIXED_ENCODER)        += mpegaudioenc_fixed.o mpegaudio.o \
                                           mpegaudiodata.o mpegaudiodsp_data.o
 OBJS-$(CONFIG_MP2FLOAT_DECODER)        += mpegaudiodec_float.o
+OBJS-$(CONFIG_MP3_AUDIOTOOLBOX_DECODER) += audiotoolbox_decoder.o 
 OBJS-$(CONFIG_MP3_DECODER)             += mpegaudiodec_fixed.o
 OBJS-$(CONFIG_MP3ADU_DECODER)          += mpegaudiodec_fixed.o
 OBJS-$(CONFIG_MP3ADUFLOAT_DECODER)     += mpegaudiodec_float.o

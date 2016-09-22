@@ -2141,6 +2141,7 @@ CMDLINE_SET="
     toolchain
     valgrind
     yasmexe
+    sdl_dir
 "
 
 CMDLINE_APPEND="
@@ -2255,6 +2256,12 @@ qsvenc_select="qsv"
 rdft_select="fft"
 
 # decoders / encoders
+h264_mf_video_decoder_select="mf_video_decoder h264_mp4toannexb_bsf"
+aac_mf_audio_decoder_select="mf_audio_decoder"
+mp3_mf_audio_decoder_select="mf_audio_decoder"
+h264_videotoolbox_decoder_select="videotoolbox_decoder"
+aac_audiotoolbox_decoder_select="audiotoolbox_decoder"
+mp3_audiotoolbox_decoder_select="audiotoolbox_decoder"
 aac_decoder_select="imdct15 mdct sinewin"
 aac_fixed_decoder_select="mdct sinewin"
 aac_encoder_select="audio_frame_queue iirfilter lpc mdct sinewin"
@@ -2488,6 +2495,14 @@ zlib_decoder_select="zlib"
 zlib_encoder_select="zlib"
 zmbv_decoder_select="zlib"
 zmbv_encoder_select="zlib"
+
+# platform codecs
+h264_mf_video_decoder_extralibs="mfplat.lib mfuuid.lib wmcodecdspuuid.lib ole32.lib"
+aac_mf_audio_decoder_extralibs="mfplat.lib mfuuid.lib wmcodecdspuuid.lib ole32.lib"
+mp3_mf_audio_decoder_extralibs="mfplat.lib mfuuid.lib wmcodecdspuuid.lib ole32.lib"
+h264_videotoolbox_decoder_extralibs="-framework CoreMedia -framework CoreVideo -framework VideoToolbox"
+aac_audiotoolbox_decoder_extralibs="-framework CoreMedia -framework CoreAudio -framework AudioToolbox"
+mp3_audiotoolbox_decoder_extralibs="-framework CoreMedia -framework CoreAudio -framework AudioToolbox"
 
 # hardware accelerators
 crystalhd_deps="libcrystalhd_libcrystalhd_if_h"
@@ -3055,6 +3070,9 @@ enable valgrind_backtrace
 sws_max_filter_size_default=256
 set_default sws_max_filter_size
 
+# Enable platform codecs by default.
+#enable mediafoundation
+
 # Enable hwaccels by default.
 enable d3d11va dxva2 vaapi vda vdpau videotoolbox xvmc
 enable xlib
@@ -3363,8 +3381,10 @@ case "$toolchain" in
         cl_major_ver=$(cl 2>&1 | sed -n 's/.*Version \([[:digit:]]\{1,\}\)\..*/\1/p')
         if [ -z "$cl_major_ver" ] || [ $cl_major_ver -ge 18 ]; then
             cc_default="cl"
+            cxx_default="cl"
         else
             cc_default="c99wrap cl"
+            cxx_default="c99wrap cl"
         fi
         ld_default="$source_path/compat/windows/mslink"
         nm_default="dumpbin -symbols"
@@ -3862,6 +3882,7 @@ probe_cc(){
             _ld_o='-Fe$@'
         fi
         _cc_o='-Fo$@'
+        _cxx_o='-Fo$@'
         _cc_e='-P -Fi$@'
         _flags_filter=msvc_flags
         _ld_lib='lib%.a'
@@ -3904,6 +3925,7 @@ cflags_noopt=$_cflags_noopt
 add_cflags $_flags $_cflags
 cc_ldflags=$_ldflags
 set_ccvars CC
+set_ccvars CXX
 
 probe_cc hostcc "$host_cc"
 host_cflags_filter=$_flags_filter
@@ -4775,7 +4797,7 @@ probe_libc(){
         # found in the SDK headers by default. (Alternatively, we could force
         # _WIN32_WINNT to 0x0602 in that case.)
         check_${pfx}cpp_condition stdlib.h "defined(_WIN32_WINNT)" ||
-            { check_${pfx}cpp <<EOF && add_${pfx}cppflags -D_WIN32_WINNT=0x0502; }
+            { check_${pfx}cpp <<EOF && add_${pfx}cppflags -D_WIN32_WINNT=0x0601; }
 #ifdef WINAPI_FAMILY
 #include <winapifamily.h>
 #if !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
@@ -5631,7 +5653,10 @@ if ! disabled sdl; then
             check_cpp_condition SDL.h "(SDL_MAJOR_VERSION<<16 | SDL_MINOR_VERSION<<8 | SDL_PATCHLEVEL) < 0x010300" $sdl_cflags &&
             enable sdl
         elif enabled sdl ; then
-            die "ERROR: SDL not found"
+            #die "ERROR: SDL not found"
+            sdl_cflags="-I${sdl_dir}/include"
+            sdl_libs="-lSDL -L${sdl_dir}/lib/x86"
+            enable sdl
         else
             disable sdl
         fi

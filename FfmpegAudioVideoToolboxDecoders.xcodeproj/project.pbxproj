@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		CAA115DF1D0FAAC70081AE17 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CAA115E01D0FAAC70081AE17 /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				CAA115E41D0FAAD10081AE17 /* PBXTargetDependency */,
+				CAA115E61D0FAAD10081AE17 /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		CACF0A5A1D179EC0004233AF /* videotoolbox_decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = CACF0A591D179EC0004233AF /* videotoolbox_decoder.c */; };
+		CACF0A5B1D179ED0004233AF /* audiotoolbox_decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = CACF0A571D179E99004233AF /* audiotoolbox_decoder.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAA115E31D0FAAD10081AE17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA76975B1D09DC1D00EA51FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA7697621D09DC1D00EA51FE;
+			remoteInfo = FfmpegVideoToolboxDecoder;
+		};
+		CAA115E51D0FAAD10081AE17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA76975B1D09DC1D00EA51FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAA115D01D0F89D10081AE17;
+			remoteInfo = FfmpegAudioToolboxDecoder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CA7697631D09DC1D00EA51FE /* libFfmpegVideoToolboxDecoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFfmpegVideoToolboxDecoder.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA115D11D0F89D10081AE17 /* libFfmpegAudioToolboxDecoder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFfmpegAudioToolboxDecoder.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACF0A571D179E99004233AF /* audiotoolbox_decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = audiotoolbox_decoder.c; path = libavcodec/audiotoolbox_decoder.c; sourceTree = "<group>"; };
+		CACF0A591D179EC0004233AF /* videotoolbox_decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = videotoolbox_decoder.c; path = libavcodec/videotoolbox_decoder.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA7697601D09DC1D00EA51FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA115CE1D0F89D10081AE17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA76975A1D09DC1D00EA51FE = {
+			isa = PBXGroup;
+			children = (
+				CACF0A591D179EC0004233AF /* videotoolbox_decoder.c */,
+				CACF0A571D179E99004233AF /* audiotoolbox_decoder.c */,
+				CA7697641D09DC1D00EA51FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA7697641D09DC1D00EA51FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA7697631D09DC1D00EA51FE /* libFfmpegVideoToolboxDecoder.a */,
+				CAA115D11D0F89D10081AE17 /* libFfmpegAudioToolboxDecoder.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CA7697611D09DC1D00EA51FE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA115CF1D0F89D10081AE17 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CA7697621D09DC1D00EA51FE /* FfmpegVideoToolboxDecoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA76976C1D09DC1D00EA51FE /* Build configuration list for PBXNativeTarget "FfmpegVideoToolboxDecoder" */;
+			buildPhases = (
+				CA76975F1D09DC1D00EA51FE /* Sources */,
+				CA7697601D09DC1D00EA51FE /* Frameworks */,
+				CA7697611D09DC1D00EA51FE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FfmpegVideoToolboxDecoder;
+			productName = FfmpegVideoToolboxDecoder;
+			productReference = CA7697631D09DC1D00EA51FE /* libFfmpegVideoToolboxDecoder.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CAA115D01D0F89D10081AE17 /* FfmpegAudioToolboxDecoder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAA115D71D0F89D10081AE17 /* Build configuration list for PBXNativeTarget "FfmpegAudioToolboxDecoder" */;
+			buildPhases = (
+				CAA115CD1D0F89D10081AE17 /* Sources */,
+				CAA115CE1D0F89D10081AE17 /* Frameworks */,
+				CAA115CF1D0F89D10081AE17 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FfmpegAudioToolboxDecoder;
+			productName = FfmpegAudioToolboxDecoder;
+			productReference = CAA115D11D0F89D10081AE17 /* libFfmpegAudioToolboxDecoder.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA76975B1D09DC1D00EA51FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Axiomatic Systems";
+				TargetAttributes = {
+					CA7697621D09DC1D00EA51FE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					CAA115D01D0F89D10081AE17 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					CAA115DF1D0FAAC70081AE17 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = CA76975E1D09DC1D00EA51FE /* Build configuration list for PBXProject "FfmpegAudioVideoToolboxDecoders" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CA76975A1D09DC1D00EA51FE;
+			productRefGroup = CA7697641D09DC1D00EA51FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA7697621D09DC1D00EA51FE /* FfmpegVideoToolboxDecoder */,
+				CAA115D01D0F89D10081AE17 /* FfmpegAudioToolboxDecoder */,
+				CAA115DF1D0FAAC70081AE17 /* All */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA76975F1D09DC1D00EA51FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACF0A5A1D179EC0004233AF /* videotoolbox_decoder.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA115CD1D0F89D10081AE17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACF0A5B1D179ED0004233AF /* audiotoolbox_decoder.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAA115E41D0FAAD10081AE17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA7697621D09DC1D00EA51FE /* FfmpegVideoToolboxDecoder */;
+			targetProxy = CAA115E31D0FAAD10081AE17 /* PBXContainerItemProxy */;
+		};
+		CAA115E61D0FAAD10081AE17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAA115D01D0F89D10081AE17 /* FfmpegAudioToolboxDecoder */;
+			targetProxy = CAA115E51D0FAAD10081AE17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CA76976A1D09DC1D00EA51FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CA76976B1D09DC1D00EA51FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CA76976D1D09DC1D00EA51FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = /Users/gilles/Workspace/ffmpeg;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CA76976E1D09DC1D00EA51FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = /Users/gilles/Workspace/ffmpeg;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CAA115D81D0F89D10081AE17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = /Users/gilles/Workspace/ffmpeg;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CAA115D91D0F89D10081AE17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = /Users/gilles/Workspace/ffmpeg;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CAA115E11D0FAAC70081AE17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CAA115E21D0FAAC70081AE17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA76975E1D09DC1D00EA51FE /* Build configuration list for PBXProject "FfmpegAudioVideoToolboxDecoders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA76976A1D09DC1D00EA51FE /* Debug */,
+				CA76976B1D09DC1D00EA51FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA76976C1D09DC1D00EA51FE /* Build configuration list for PBXNativeTarget "FfmpegVideoToolboxDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA76976D1D09DC1D00EA51FE /* Debug */,
+				CA76976E1D09DC1D00EA51FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAA115D71D0F89D10081AE17 /* Build configuration list for PBXNativeTarget "FfmpegAudioToolboxDecoder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA115D81D0F89D10081AE17 /* Debug */,
+				CAA115D91D0F89D10081AE17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAA115E01D0FAAC70081AE17 /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA115E11D0FAAC70081AE17 /* Debug */,
+				CAA115E21D0FAAC70081AE17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA76975B1D09DC1D00EA51FE /* Project object */;
+}
