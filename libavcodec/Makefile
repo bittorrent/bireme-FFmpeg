@@ -61,7 +61,6 @@ OBJS-$(CONFIG_AUDIO_FRAME_QUEUE)       += audio_frame_queue.o
 OBJS-$(CONFIG_AUDIODSP)                += audiodsp.o
 OBJS-$(CONFIG_BLOCKDSP)                += blockdsp.o
 OBJS-$(CONFIG_BSWAPDSP)                += bswapdsp.o
-OBJS-$(CONFIG_CABAC)                   += cabac.o
 OBJS-$(CONFIG_CBS)                     += cbs.o
 OBJS-$(CONFIG_CBS_AV1)                 += cbs_av1.o
 OBJS-$(CONFIG_CBS_H264)                += cbs_h2645.o h2645_parse.o
@@ -84,11 +83,7 @@ OBJS-$(CONFIG_FLACDSP)                 += flacdsp.o
 OBJS-$(CONFIG_FMTCONVERT)              += fmtconvert.o
 OBJS-$(CONFIG_GOLOMB)                  += golomb.o
 OBJS-$(CONFIG_H263DSP)                 += h263dsp.o
-OBJS-$(CONFIG_H264CHROMA)              += h264chroma.o
-OBJS-$(CONFIG_H264DSP)                 += h264dsp.o h264idct.o
 OBJS-$(CONFIG_H264PARSE)               += h264_parse.o h2645_parse.o h264_ps.o
-OBJS-$(CONFIG_H264PRED)                += h264pred.o
-OBJS-$(CONFIG_H264QPEL)                += h264qpel.o
 OBJS-$(CONFIG_HEVCPARSE)               += hevc_parse.o h2645_parse.o hevc_ps.o hevc_sei.o hevc_data.o
 OBJS-$(CONFIG_HPELDSP)                 += hpeldsp.o
 OBJS-$(CONFIG_HUFFMAN)                 += huffman.o
@@ -340,9 +335,8 @@ OBJS-$(CONFIG_H263_ENCODER)            += mpeg4videoenc.o mpeg4video.o  \
                                           h263.o ituh263enc.o flvenc.o h263data.o
 OBJS-$(CONFIG_H263_V4L2M2M_DECODER)    += v4l2_m2m_dec.o
 OBJS-$(CONFIG_H263_V4L2M2M_ENCODER)    += v4l2_m2m_enc.o
-OBJS-$(CONFIG_H264_DECODER)            += h264dec.o h264_cabac.o h264_cavlc.o \
-                                          h264_direct.o h264_loopfilter.o  \
-                                          h264_mb.o h264_picture.o \
+OBJS-$(CONFIG_H264_DECODER)            += h264dec.o \
+                                          h264_picture.o \
                                           h264_refs.o h264_sei.o \
                                           h264_slice.o h264data.o
 OBJS-$(CONFIG_H264_AMF_ENCODER)        += amfenc_h264.o
