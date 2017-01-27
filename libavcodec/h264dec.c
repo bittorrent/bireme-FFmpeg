@@ -35,16 +35,16 @@
 #include "libavutil/timer.h"
 #include "internal.h"
 #include "bytestream.h"
-#include "cabac.h"
-#include "cabac_functions.h"
+//#include "cabac.h"
+//#include "cabac_functions.h"
 #include "error_resilience.h"
 #include "avcodec.h"
 #include "h264.h"
 #include "h264dec.h"
 #include "h2645_parse.h"
 #include "h264data.h"
-#include "h264chroma.h"
-#include "h264_mvpred.h"
+//#include "h264chroma.h"
+//#include "h264_mvpred.h"
 #include "h264_ps.h"
 #include "golomb.h"
 #include "mathops.h"
@@ -65,6 +65,7 @@ int avpriv_h264_has_num_reorder_frames(AVCodecContext *avctx)
     return h && h->ps.sps ? h->ps.sps->num_reorder_frames : 0;
 }
 
+#if CONFIG_ERROR_RESILIENCE
 static void h264_er_decode_mb(void *opaque, int ref, int mv_dir, int mv_type,
                               int (*mv)[2][4][2],
                               int mb_x, int mb_y, int mb_intra, int mb_skipped)
@@ -100,6 +101,7 @@ static void h264_er_decode_mb(void *opaque, int ref, int mv_dir, int mv_type,
     sl->mb_field_decoding_flag = 0;
     ff_h264_hl_decode_mb(h, &h->slice_ctx[0]);
 }
+#endif
 
 void ff_h264_draw_horiz_band(const H264Context *h, H264SliceContext *sl,
                              int y, int height)
@@ -255,8 +257,9 @@ int ff_h264_slice_context_init(H264Context *h, H264SliceContext *sl)
 
     if (sl != h->slice_ctx) {
         memset(er, 0, sizeof(*er));
-    } else
-    if (CONFIG_ERROR_RESILIENCE) {
+    }
+#if CONFIG_ERROR_RESILIENCE
+	else {
 
         /* init ER */
         er->avctx          = h->avctx;
@@ -295,6 +298,7 @@ int ff_h264_slice_context_init(H264Context *h, H264SliceContext *sl)
         for (i = 0; i < yc_size; i++)
             sl->dc_val_base[i] = 1024;
     }
+#endif
 
     return 0;
 
@@ -397,11 +401,13 @@ av_cold int ff_h264_decode_init(AVCodecContext *avctx)
     if (ret < 0)
         return ret;
 
+#if 0
     ret = ff_thread_once(&h264_vlc_init, ff_h264_decode_init_vlc);
     if (ret != 0) {
         av_log(avctx, AV_LOG_ERROR, "pthread_once has failed.");
         return AVERROR_UNKNOWN;
     }
+#endif
 
     if (avctx->ticks_per_frame == 1) {
         if(h->avctx->time_base.den < INT_MAX/2) {
