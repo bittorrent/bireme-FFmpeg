@@ -89,6 +89,7 @@
 /**
  * Context for storing H.264 prediction functions
  */
+#if 0
 typedef struct H264PredContext {
     void(*pred4x4[9 + 3 + 3])(uint8_t *src, const uint8_t *topright,
                               ptrdiff_t stride);
@@ -122,5 +123,5 @@ void ff_h264_pred_init_x86(H264PredContext *h, int codec_id,
                            const int bit_depth, const int chroma_format_idc);
 void ff_h264_pred_init_mips(H264PredContext *h, int codec_id,
                             const int bit_depth, const int chroma_format_idc);
-
+#endif
 #endif /* AVCODEC_H264PRED_H */

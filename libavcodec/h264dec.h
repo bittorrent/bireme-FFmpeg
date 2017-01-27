@@ -32,16 +32,16 @@
 #include "libavutil/intreadwrite.h"
 #include "libavutil/thread.h"
 
-#include "cabac.h"
+//#include "cabac.h"
 #include "error_resilience.h"
 #include "h264_parse.h"
 #include "h264_ps.h"
 #include "h264_sei.h"
 #include "h2645_parse.h"
-#include "h264chroma.h"
-#include "h264dsp.h"
+//#include "h264chroma.h"
+//#include "h264dsp.h"
 #include "h264pred.h"
-#include "h264qpel.h"
+//#include "h264qpel.h"
 #include "internal.h"
 #include "mpegutils.h"
 #include "parser.h"
@@ -319,7 +319,7 @@ typedef struct H264SliceContext {
     /**
      * Cabac
      */
-    CABACContext cabac;
+    //CABACContext cabac;
     uint8_t cabac_state[1024];
     int cabac_init_idc;
 
@@ -341,10 +341,10 @@ typedef struct H264SliceContext {
 typedef struct H264Context {
     const AVClass *class;
     AVCodecContext *avctx;
-    VideoDSPContext vdsp;
-    H264DSPContext h264dsp;
-    H264ChromaContext h264chroma;
-    H264QpelContext h264qpel;
+    //VideoDSPContext vdsp;
+    //H264DSPContext h264dsp;
+    //H264ChromaContext h264chroma;
+    //H264QpelContext h264qpel;
 
     H264Picture DPB[H264_MAX_PICTURE_COUNT];
     H264Picture *cur_pic_ptr;
@@ -381,7 +381,7 @@ typedef struct H264Context {
     int picture_idr;
 
     int8_t(*intra4x4_pred_mode);
-    H264PredContext hpc;
+    //H264PredContext hpc;
 
     uint8_t (*non_zero_count)[48];
 
@@ -698,6 +698,7 @@ static av_always_inline int pred_intra_mode(const H264Context *h,
 static av_always_inline void write_back_intra_pred_mode(const H264Context *h,
                                                         H264SliceContext *sl)
 {
+#if 0
     int8_t *i4x4       = sl->intra4x4_pred_mode + h->mb2br_xy[sl->mb_xy];
     int8_t *i4x4_cache = sl->intra4x4_pred_mode_cache;
 
@@ -705,6 +706,7 @@ static av_always_inline void write_back_intra_pred_mode(const H264Context *h,
     i4x4[4] = i4x4_cache[7 + 8 * 3];
     i4x4[5] = i4x4_cache[7 + 8 * 2];
     i4x4[6] = i4x4_cache[7 + 8 * 1];
+#endif
 }
 
 static av_always_inline void write_back_non_zero_count(const H264Context *h,

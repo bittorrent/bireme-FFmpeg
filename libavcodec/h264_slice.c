@@ -31,15 +31,15 @@
 #include "libavutil/stereo3d.h"
 #include "libavutil/timer.h"
 #include "internal.h"
-#include "cabac.h"
-#include "cabac_functions.h"
+//#include "cabac.h"
+//#include "cabac_functions.h"
 #include "error_resilience.h"
 #include "avcodec.h"
 #include "h264.h"
 #include "h264dec.h"
 #include "h264data.h"
-#include "h264chroma.h"
-#include "h264_mvpred.h"
+//#include "h264chroma.h"
+//#include "h264_mvpred.h"
 #include "h264_ps.h"
 #include "golomb.h"
 #include "mathops.h"
@@ -947,6 +947,7 @@ static int h264_slice_header_init(H264Context *h)
     h->chroma_format_idc          = sps->chroma_format_idc;
     h->bit_depth_luma             = sps->bit_depth_luma;
 
+#if 0
     ff_h264dsp_init(&h->h264dsp, sps->bit_depth_luma,
                     sps->chroma_format_idc);
     ff_h264chroma_init(&h->h264chroma, sps->bit_depth_chroma);
@@ -954,6 +955,7 @@ static int h264_slice_header_init(H264Context *h)
     ff_h264_pred_init(&h->hpc, h->avctx->codec_id, sps->bit_depth_luma,
                       sps->chroma_format_idc);
     ff_videodsp_init(&h->vdsp, sps->bit_depth_luma);
+#endif
 
     if (!HAVE_THREADS || !(h->avctx->active_thread_type & FF_THREAD_SLICE)) {
         ret = ff_h264_slice_context_init(h, &h->slice_ctx[0]);
@@ -1889,10 +1891,12 @@ static int h264_slice_init(H264Context *h, H264SliceContext *sl,
         }
     }
 
+#if 0
     if (sl->slice_type_nos == AV_PICTURE_TYPE_B && !sl->direct_spatial_mv_pred)
         ff_h264_direct_dist_scale_factor(h, sl);
     if (!h->setup_finished)
         ff_h264_direct_ref_list_init(h, sl);
+#endif
 
     if (h->avctx->skip_loop_filter >= AVDISCARD_ALL ||
         (h->avctx->skip_loop_filter >= AVDISCARD_NONKEY &&
@@ -2360,6 +2364,7 @@ static int fill_filter_caches(const H264Context *h, H264SliceContext *sl, int mb
 
 static void loop_filter(const H264Context *h, H264SliceContext *sl, int start_x, int end_x)
 {
+#if 0
     uint8_t *dest_y, *dest_cb, *dest_cr;
     int linesize, uvlinesize, mb_x, mb_y;
     const int end_mb_y       = sl->mb_y + FRAME_MBAFF(h);
@@ -2426,6 +2431,7 @@ static void loop_filter(const H264Context *h, H264SliceContext *sl, int start_x,
     sl->mb_y         = end_mb_y - FRAME_MBAFF(h);
     sl->chroma_qp[0] = get_chroma_qp(h->ps.pps, 0, sl->qscale);
     sl->chroma_qp[1] = get_chroma_qp(h->ps.pps, 1, sl->qscale);
+#endif
 }
 
 static void predict_field_decoding_flag(const H264Context *h, H264SliceContext *sl)
@@ -2522,6 +2528,7 @@ static int decode_slice(struct AVCodecContext *avctx, void *arg)
     }
 
     if (h->ps.pps->cabac) {
+#if 0
         /* realign */
         align_get_bits(&sl->gb);
 
@@ -2548,8 +2555,8 @@ static int decode_slice(struct AVCodecContext *avctx, void *arg)
             ret = ff_h264_decode_mb_cabac(h, sl);
             // STOP_TIMER("decode_mb_cabac")
 
-            if (ret >= 0)
-                ff_h264_hl_decode_mb(h, sl);
+            //if (ret >= 0)
+            //    ff_h264_hl_decode_mb(h, sl);
 
             // FIXME optimal? or let mb_decode decode 16x32 ?
             if (ret >= 0 && FRAME_MBAFF(h)) {
@@ -2605,6 +2612,7 @@ static int decode_slice(struct AVCodecContext *avctx, void *arg)
                 goto finish;
             }
         }
+#endif
     } else {
         for (;;) {
             int ret;
@@ -2617,18 +2625,18 @@ static int decode_slice(struct AVCodecContext *avctx, void *arg)
                 return AVERROR_INVALIDDATA;
             }
 
-            ret = ff_h264_decode_mb_cavlc(h, sl);
+            //ret = ff_h264_decode_mb_cavlc(h, sl);
 
-            if (ret >= 0)
-                ff_h264_hl_decode_mb(h, sl);
+            //if (ret >= 0)
+            //    ff_h264_hl_decode_mb(h, sl);
 
             // FIXME optimal? or let mb_decode decode 16x32 ?
             if (ret >= 0 && FRAME_MBAFF(h)) {
                 sl->mb_y++;
-                ret = ff_h264_decode_mb_cavlc(h, sl);
+             //   ret = ff_h264_decode_mb_cavlc(h, sl);
 
-                if (ret >= 0)
-                    ff_h264_hl_decode_mb(h, sl);
+             //   if (ret >= 0)
+             //       ff_h264_hl_decode_mb(h, sl);
                 sl->mb_y--;
             }
 

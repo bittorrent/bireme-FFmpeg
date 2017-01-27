@@ -43,6 +43,7 @@
 #include "h264_sei.h"
 #include "h264_ps.h"
 #include "h264data.h"
+#include "startcode.h"
 #include "internal.h"
 #include "mpegutils.h"
 #include "parser.h"
@@ -50,7 +51,7 @@
 typedef struct H264ParseContext {
     ParseContext pc;
     H264ParamSets ps;
-    H264DSPContext h264dsp;
+    //H264DSPContext h264dsp;
     H264POCContext poc;
     H264SEIContext sei;
     int is_avc;
@@ -96,7 +97,7 @@ static int h264_find_frame_end(H264ParseContext *p, const uint8_t *buf,
         }
 
         if (state == 7) {
-            i += p->h264dsp.startcode_find_candidate(buf + i, next_avc - i);
+            i += ff_startcode_find_candidate_c(buf + i, next_avc - i);
             if (i < next_avc)
                 state = 2;
         } else if (state <= 2) {
@@ -691,7 +692,7 @@ static av_cold int init(AVCodecParserContext *s)
 
     p->reference_dts = AV_NOPTS_VALUE;
     p->last_frame_num = INT_MAX;
-    ff_h264dsp_init(&p->h264dsp, 8, 1);
+    //ff_h264dsp_init(&p->h264dsp, 8, 1);
     return 0;
 }
 

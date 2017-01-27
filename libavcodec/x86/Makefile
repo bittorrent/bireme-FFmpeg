@@ -12,11 +12,6 @@ OBJS-$(CONFIG_FDCTDSP)                 += x86/fdctdsp_init.o
 OBJS-$(CONFIG_FFT)                     += x86/fft_init.o
 OBJS-$(CONFIG_FLACDSP)                 += x86/flacdsp_init.o
 OBJS-$(CONFIG_FMTCONVERT)              += x86/fmtconvert_init.o
-OBJS-$(CONFIG_H263DSP)                 += x86/h263dsp_init.o
-OBJS-$(CONFIG_H264CHROMA)              += x86/h264chroma_init.o
-OBJS-$(CONFIG_H264DSP)                 += x86/h264dsp_init.o
-OBJS-$(CONFIG_H264PRED)                += x86/h264_intrapred_init.o
-OBJS-$(CONFIG_H264QPEL)                += x86/h264_qpel.o
 OBJS-$(CONFIG_HPELDSP)                 += x86/hpeldsp_init.o
 OBJS-$(CONFIG_LLAUDDSP)                += x86/lossless_audiodsp_init.o
 OBJS-$(CONFIG_LLVIDDSP)                += x86/lossless_videodsp_init.o
@@ -96,20 +91,6 @@ YASM-OBJS-$(CONFIG_DCT)                += x86/dct32.o
 YASM-OBJS-$(CONFIG_FFT)                += x86/fft.o
 YASM-OBJS-$(CONFIG_FMTCONVERT)         += x86/fmtconvert.o
 YASM-OBJS-$(CONFIG_H263DSP)            += x86/h263_loopfilter.o
-YASM-OBJS-$(CONFIG_H264CHROMA)         += x86/h264_chromamc.o           \
-                                          x86/h264_chromamc_10bit.o
-YASM-OBJS-$(CONFIG_H264DSP)            += x86/h264_deblock.o            \
-                                          x86/h264_deblock_10bit.o      \
-                                          x86/h264_idct.o               \
-                                          x86/h264_idct_10bit.o         \
-                                          x86/h264_weight.o             \
-                                          x86/h264_weight_10bit.o
-YASM-OBJS-$(CONFIG_H264PRED)           += x86/h264_intrapred.o          \
-                                          x86/h264_intrapred_10bit.o
-YASM-OBJS-$(CONFIG_H264QPEL)           += x86/h264_qpel_8bit.o          \
-                                          x86/h264_qpel_10bit.o         \
-                                          x86/fpel.o                    \
-                                          x86/qpel.o
 YASM-OBJS-$(CONFIG_HPELDSP)            += x86/fpel.o                    \
                                           x86/hpeldsp.o
 YASM-OBJS-$(CONFIG_HUFFYUVDSP)         += x86/huffyuvdsp.o
